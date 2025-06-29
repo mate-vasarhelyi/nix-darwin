@@ -1,0 +1,15 @@
+{
+  "nix.enableLanguageServer": true,
+  "nix.serverPath": "/etc/profiles/per-user/mate/bin/nixd",
+  "nix.serverSettings": {
+    "nixd": {
+      "formatting": {
+        "command": "nixpkgs-fmt"
+      },
+      "eval": {
+        "depth": 10,
+        "workers": 1
+      }
+    }
+  }
+} 
