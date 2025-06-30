@@ -35,6 +35,7 @@
     nixd
     gh
     fzf
+    azure-cli
   ];
 
   # Let Home Manager install and manage itself

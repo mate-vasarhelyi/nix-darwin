@@ -30,6 +30,7 @@
       url = {
         "https://github.com/".insteadOf = "gh:";
         "ssh://git@github.com".pushInsteadOf = "https://github.com/";
+        "ssh://git@github.com/".insteadOf = "https://github.com/";
       };
       
       # Colors
