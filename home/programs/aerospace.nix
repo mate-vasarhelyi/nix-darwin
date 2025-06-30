@@ -98,6 +98,7 @@
         alt-shift-l = "move right";
         
         # Workspace switching
+        alt-backtick = "workspace 0";
         alt-1 = "workspace 1";
         alt-2 = "workspace 2";
         alt-3 = "workspace 3";
@@ -108,6 +109,7 @@
         alt-8 = "workspace 8";
         
         # Move to workspace
+        alt-shift-backtick = "move-node-to-workspace 0";
         alt-shift-1 = "move-node-to-workspace 1";
         alt-shift-2 = "move-node-to-workspace 2";
         alt-shift-3 = "move-node-to-workspace 3";

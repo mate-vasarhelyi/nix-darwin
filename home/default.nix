@@ -7,6 +7,7 @@
     ./programs/starship.nix
     ./programs/direnv.nix
     ./programs/cursor
+    ./programs/zen
   ];
 
   home.username = "mate";

@@ -53,9 +53,9 @@
       mr = "mise run";
       mw = "mise watch";
 
-      export-all = "export-cursor-extensions; export-cursor-settings";
+      export-all = "export-cursor-extensions; export-cursor-settings; export-zen-prefs; export-zen-shortcuts";
 
-      import-all = "install-cursor-extensions";
+      import-all = "install-cursor-extensions; import-zen-prefs; import-zen-shortcuts";
     };
 
     # Shell abbreviations (expand when you press space)
