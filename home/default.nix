@@ -8,6 +8,9 @@
     ./programs/direnv.nix
     ./programs/cursor
     ./programs/zen
+    ./programs/jankyborders.nix
+    ./programs/orbstack.nix
+    ./programs/autoraise.nix
   ];
 
   home.username = "mate";

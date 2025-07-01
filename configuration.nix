@@ -41,7 +41,6 @@
     wget
     nano
     tailscale
-    autoraise
     # Add Nerd Fonts for sketchybar icons
     nerd-fonts.fira-code
     nerd-fonts.jetbrains-mono
@@ -103,6 +102,10 @@
       "jellyfin-media-player"
       "transmission"
       "balenaetcher"
+
+      # Fonts
+      "sf-symbols"
+      "font-sketchybar-app-font"
     ];
   };
 
@@ -132,15 +135,4 @@
     /System/Library/Frameworks/ApplicationServices.framework/Frameworks/ATS.framework/Support/atsutil server -ping
     echo "Font cache refreshed"
   '';
-
-  # Configure autoraise to start automatically
-  launchd.user.agents.autoraise = {
-    serviceConfig = {
-      ProgramArguments = [ "${pkgs.autoraise}/bin/autoraise" "-delay" "1" "-warp" ];
-      KeepAlive = true;
-      RunAtLoad = true;
-      StandardErrorPath = "/tmp/autoraise.err";
-      StandardOutPath = "/tmp/autoraise.out";
-    };
-  };
 }

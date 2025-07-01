@@ -50,7 +50,7 @@
       exec-on-workspace-change = [
         "/bin/bash" 
         "-c" 
-        "/etc/profiles/per-user/mate/bin/sketchybar --trigger workspace_focus FOCUSED=$AEROSPACE_FOCUSED_WORKSPACE PREV_FOCUSED=$AEROSPACE_PREV_WORKSPACE"
+        "/etc/profiles/per-user/mate/bin/sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE PREV_WORKSPACE=$AEROSPACE_PREV_WORKSPACE && ~/.config/sketchybar/plugins/update_workspace_icons.sh $AEROSPACE_FOCUSED_WORKSPACE"
       ];
       
       # ===== WINDOW DETECTION RULES =====

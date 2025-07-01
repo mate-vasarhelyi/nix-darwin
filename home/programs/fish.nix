@@ -40,6 +40,54 @@
       gst = "git status";
       gsta = "git stash push";
       gstaa = "git stash apply";
+
+      # Kubernetes shortcuts (oh-my-zsh inspired)
+      k = "kubectl";
+      kg = "kubectl get";
+      kd = "kubectl describe";
+      
+      # Context management
+      kcuc = "kubectl config use-context";
+      kccc = "kubectl config current-context";
+      kcgc = "kubectl config get-contexts";
+      kcn = "kubectl config set-context --current --namespace";
+      
+      # Apply and delete
+      kaf = "kubectl apply -f";
+      kdel = "kubectl delete";
+      kdelf = "kubectl delete -f";
+      
+      # Pod management
+      kgp = "kubectl get pods";
+      kgpw = "kubectl get pods --watch";
+      kgpwide = "kubectl get pods -o wide";
+      kep = "kubectl edit pods";
+      kdp = "kubectl describe pods";
+      keti = "kubectl exec -ti";
+      
+      # Service management
+      kgs = "kubectl get svc";
+      kes = "kubectl edit svc";
+      kds = "kubectl describe svc";
+      
+      # Deployment management
+      kgd = "kubectl get deployment";
+      kgdw = "kubectl get deployment --watch";
+      ked = "kubectl edit deployment";
+      kdd = "kubectl describe deployment";
+      ksd = "kubectl scale deployment";
+      
+      # Namespace management
+      kgns = "kubectl get namespaces";
+      
+      # Logs and port forwarding
+      kl = "kubectl logs";
+      klf = "kubectl logs -f";
+      kpf = "kubectl port-forward";
+      
+      # All resources
+      kga = "kubectl get all";
+      kgaa = "kubectl get all --all-namespaces";
       
       # System shortcuts
       reload = "source ~/.config/fish/config.fish";
@@ -65,11 +113,6 @@
       dc = "docker-compose";
       dcu = "docker-compose up";
       dcd = "docker-compose down";
-      
-      # Kubernetes
-      k = "kubectl";
-      kg = "kubectl get";
-      kd = "kubectl describe";
       
       # Common directories
       dl = "cd ~/Downloads";
