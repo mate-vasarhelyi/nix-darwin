@@ -22,6 +22,7 @@
       after-startup-command = [
         # Example commands - see https://nikitabobko.github.io/AeroSpace/commands
         "layout tiles"
+        "exec-and-forget /etc/profiles/per-user/mate/bin/sketchybar --reload"
         # "exec-and-forget open -n /System/Applications/Utilities/Terminal.app"
       ];
       
@@ -50,7 +51,7 @@
       exec-on-workspace-change = [
         "/bin/bash" 
         "-c" 
-        "/etc/profiles/per-user/mate/bin/sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE PREV_WORKSPACE=$AEROSPACE_PREV_WORKSPACE && ~/.config/sketchybar/plugins/update_workspace_icons.sh $AEROSPACE_FOCUSED_WORKSPACE"
+        "/etc/profiles/per-user/mate/bin/sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE PREV_WORKSPACE=$AEROSPACE_PREV_WORKSPACE"
       ];
       
       # ===== WINDOW DETECTION RULES =====

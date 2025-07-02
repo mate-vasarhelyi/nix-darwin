@@ -1,29 +1,18 @@
-#!/bin/bash
-
-echo "Updating workspace icons for $1" >> /tmp/sketchybar.log
+#!/usr/bin/env bash
 
 CONFIG_DIR="$HOME/.config/sketchybar"
 
-update_space_icons() {
-    local sid=$1
-    local apps=$(/etc/profiles/per-user/mate/bin/aerospace list-windows --workspace "$sid" | awk -F'|' '{gsub(/^ *| *$/, "", $2); print $2}')
+sid=$1
+apps=$(/etc/profiles/per-user/mate/bin/aerospace list-windows --workspace "$sid" | awk -F'|' '{gsub(/^ *| *$/, "", $2); print $2}')
 
-    sketchybar --set space.$sid drawing=on
-
-    if [ "${apps}" != "" ]; then
-        icon_strip=" "
-        while read -r app; do
-            icon_strip+=" $($CONFIG_DIR/plugins/icon_map_fn.sh "$app")"
-        done <<<"${apps}"
-    else
-        icon_strip=""
-    fi
-    sketchybar --set space.$sid label="$icon_strip"
-}
-
-# Update all workspaces to ensure clean state
-for monitor in $(/etc/profiles/per-user/mate/bin/aerospace list-monitors --format "%{monitor-appkit-nsscreen-screens-id}"); do
-    for sid in $(/etc/profiles/per-user/mate/bin/aerospace list-workspaces --monitor "$monitor"); do
-        update_space_icons "$sid"
-    done
-done
+if [ "${apps}" != "" ]; then
+    sketchybar --set ws.$sid drawing=on
+    icon_strip=" "
+    while read -r app; do
+        icon_strip+=" $($CONFIG_DIR/plugins/icon_map_fn.sh "$app")"
+    done <<<"${apps}"
+else
+    icon_strip=""
+    sketchybar --set ws.$sid drawing=off
+fi
+sketchybar --set ws.$sid label="$icon_strip"

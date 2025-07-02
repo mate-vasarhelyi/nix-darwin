@@ -1,6 +1,7 @@
 # A simple sketchybar config for aerospace users to get started with
 # Not too different from the base starting config!
 
+CONFIG_DIR="$HOME/.config/sketchybar"
 PLUGIN_DIR="$CONFIG_DIR/plugins"
 ITEM_DIR="$CONFIG_DIR/items" 
 ##### Bar Appearance #####
@@ -38,19 +39,13 @@ sketchybar --default "${default[@]}"
 sketchybar --add event aerospace_workspace_change
 
 # Add workspaces for all monitors
-for monitor in $(/etc/profiles/per-user/mate/bin/aerospace list-monitors --format "%{monitor-appkit-nsscreen-screens-id}"); do
+for monitor in $(/etc/profiles/per-user/mate/bin/aerospace list-monitors | awk '{print $1}'); do
   for sid in $(/etc/profiles/per-user/mate/bin/aerospace list-workspaces --monitor "$monitor"); do
-    # Determine which display this workspace should be shown on
-    display_id="1"
-    if [ "$sid" -ge 6 ] && [ "$sid" -le 7 ]; then
-      display_id="2"
-    fi
-    
-    sketchybar --add item space.$sid left \
-      --set space.$sid display="$display_id" \
-      --subscribe space.$sid aerospace_workspace_change \
-      --set space.$sid \
-      drawing=on \
+    sketchybar --add item ws.$sid left \
+      --set ws.$sid display="$monitor" \
+      --subscribe ws.$sid aerospace_workspace_change \
+      --set ws.$sid \
+      drawing=off \
       background.color=0x44ffffff \
       background.corner_radius=5 \
       background.drawing=on \
@@ -69,32 +64,25 @@ for monitor in $(/etc/profiles/per-user/mate/bin/aerospace list-monitors --forma
       label.shadow.color=0xA0000000 \
       label.shadow.distance=4 \
       click_script="/etc/profiles/per-user/mate/bin/aerospace workspace $sid" \
-      script="$CONFIG_DIR/plugins/aerospace.sh $sid"
-  done
-done
+      updates=on \
+      script="$PLUGIN_DIR/workspace.sh $sid"
 
-# Load Icons on startup for all monitors
-for monitor in $(/etc/profiles/per-user/mate/bin/aerospace list-monitors); do
-  for sid in $(/etc/profiles/per-user/mate/bin/aerospace list-workspaces --monitor "$monitor" --empty no); do
-    apps=$(/etc/profiles/per-user/mate/bin/aerospace list-windows --workspace "$sid" | awk -F'|' '{gsub(/^ *| *$/, "", $2); print $2}')
-
-    sketchybar --set space.$sid drawing=on
-
-    icon_strip=" "
-    if [ "${apps}" != "" ]; then
-      while read -r app; do
-        icon_strip+=" $($CONFIG_DIR/plugins/icon_map_fn.sh "$app")"
-      done <<<"${apps}"
-    else
-      icon_strip=""
-    fi
-    sketchybar --set space.$sid label="$icon_strip"
+      $PLUGIN_DIR/update_workspace_icons.sh "$sid"
   done
 done
 
 
 #front app
-source "$ITEM_DIR/front_app.sh"
+front_app=(
+  label.font="$FONT:Black:12.0"
+  icon.background.drawing=on
+  display=active
+  script="$PLUGIN_DIR/front_app.sh"
+  click_script="open -a 'Mission Control'"
+)
+sketchybar --add item front_app left         \
+           --set front_app "${front_app[@]}" \
+           --subscribe front_app front_app_switched
 
 
 ##### Adding Right Items #####
