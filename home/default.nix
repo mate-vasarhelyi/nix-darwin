@@ -39,6 +39,7 @@
     gh
     fzf
     azure-cli
+    jira-cli-go
   ];
 
   # Let Home Manager install and manage itself

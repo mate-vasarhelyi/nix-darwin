@@ -63,7 +63,6 @@
       # Development
       "cursor"
       "ghostty"
-      "orbstack"
       "pgadmin4"
       "postman"
       "drawio"
