@@ -56,9 +56,7 @@
     };
 
     # Homebrew formulae
-    brews = [
-      "watch"
-    ];
+    brews = [];
     
     # Homebrew casks (GUI applications)
     casks = [
