@@ -40,6 +40,7 @@
     fzf
     azure-cli
     jira-cli-go
+    procps
   ];
 
   # Let Home Manager install and manage itself

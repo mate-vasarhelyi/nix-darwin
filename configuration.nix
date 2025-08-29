@@ -56,7 +56,9 @@
     };
 
     # Homebrew formulae
-    brews = [];
+    brews = [
+      "watch"
+    ];
     
     # Homebrew casks (GUI applications)
     casks = [
@@ -73,7 +75,6 @@
       "miro"
       "joplin"
       "claude"
-      "watch"
       
       # Browsers
       "zen"
