@@ -63,6 +63,7 @@
       kgpwide = "kubectl get pods -o wide";
       kep = "kubectl edit pods";
       kdp = "kubectl describe pods";
+      kdelp = "kubectl delete pod";
       keti = "kubectl exec -ti";
       
       # Service management

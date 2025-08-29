@@ -73,6 +73,7 @@
       "miro"
       "joplin"
       "claude"
+      "watch"
       
       # Browsers
       "zen"
