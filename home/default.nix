@@ -41,6 +41,7 @@
     azure-cli
     jira-cli-go
     procps
+    git-filter-repo
   ];
 
   # Let Home Manager install and manage itself
