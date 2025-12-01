@@ -56,7 +56,9 @@
     };
 
     # Homebrew formulae
-    brews = [];
+    brews = [
+      "cocoapods"
+    ];
     
     # Homebrew casks (GUI applications)
     casks = [
@@ -69,10 +71,10 @@
       "figma"
       "slack"
       "microsoft-teams"
-      "microsoft-outlook"
       "miro"
       "joplin"
       "claude"
+      "antigravity"
       
       # Browsers
       "zen"
