@@ -39,9 +39,12 @@ if [ -z "$UTIL" ] || [ "$UTIL" = "null" ]; then
   exit 0
 fi
 
-# Calculate time until reset
+# Calculate time until reset (API returns UTC timestamps)
 if [ -n "$RESET" ] && [ "$RESET" != "null" ]; then
-  RESET_EPOCH=$(date -j -f "%Y-%m-%dT%H:%M:%S" "$(echo "$RESET" | cut -d. -f1)" "+%s" 2>/dev/null)
+  # Parse UTC timestamp - strip fractional seconds and timezone suffix
+  RESET_DT=$(echo "$RESET" | sed 's/\.[0-9]*+00:00$//')
+  # Parse as UTC (-u flag) to get correct epoch
+  RESET_EPOCH=$(date -j -u -f "%Y-%m-%dT%H:%M:%S" "$RESET_DT" "+%s" 2>/dev/null)
   NOW_EPOCH=$(date "+%s")
 
   if [ -n "$RESET_EPOCH" ]; then
@@ -50,7 +53,7 @@ if [ -n "$RESET" ] && [ "$RESET" != "null" ]; then
       HOURS=$((DIFF / 3600))
       MINS=$(((DIFF % 3600) / 60))
       if [ "$HOURS" -gt 0 ]; then
-        TIME_STR="${HOURS}h"
+        TIME_STR="${HOURS}h${MINS}m"
       else
         TIME_STR="${MINS}m"
       fi
