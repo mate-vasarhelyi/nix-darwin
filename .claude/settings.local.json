@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(claude api:*)",
+      "Bash(curl:*)",
+      "WebSearch",
+      "WebFetch(domain:codelynx.dev)",
+      "Bash(chmod:*)",
+      "Bash(security find-generic-password:*)",
+      "Bash(NAME=test /Users/mate/nix-darwin/home/programs/sketchybar/config/plugins/claude.sh:*)",
+      "Bash(echo:*)",
+      "Bash(darwin-rebuild switch:*)",
+      "Bash(sudo darwin-rebuild switch:*)"
+    ]
+  }
+}

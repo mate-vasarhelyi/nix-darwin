@@ -104,6 +104,8 @@ sketchybar --add item clock right \
   --add item battery right \
   --set battery update_freq=120 script="$PLUGIN_DIR/battery.sh" \
   --subscribe battery system_woke power_source_change \
+  --add item claude right \
+  --set claude update_freq=300 icon="󰚩" script="$PLUGIN_DIR/claude.sh" \
   --add item swap e \
   icon="" \
   label.font="Hack Nerd Font:Italic:13.0" \
