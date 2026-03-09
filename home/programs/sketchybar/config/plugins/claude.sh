@@ -24,6 +24,13 @@ if [ -z "$USAGE" ]; then
   exit 0
 fi
 
+# Check for API errors (expired token, etc.)
+API_ERROR=$(echo "$USAGE" | jq -r '.error.type // empty' 2>/dev/null)
+if [ -n "$API_ERROR" ]; then
+  sketchybar --set "$NAME" label="expired"
+  exit 0
+fi
+
 # Parse the five_hour limit (more relevant for burst activity)
 UTIL=$(echo "$USAGE" | jq -r '.five_hour.utilization // empty' 2>/dev/null)
 RESET=$(echo "$USAGE" | jq -r '.five_hour.resets_at // empty' 2>/dev/null)
