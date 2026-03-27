@@ -59,11 +59,12 @@
     brews = [
       "cocoapods"
     ];
-    
+
     # Homebrew casks (GUI applications)
     casks = [
       # Development
       "cursor"
+      "zed"
       "ghostty"
       "pgadmin4"
       "postman"
@@ -75,27 +76,30 @@
       "joplin"
       "claude"
       "antigravity"
-      
+
       # Browsers
       "zen"
-      
+
       # Communication
       "beeper"
-      
+      "legcord"
+
       # Productivity
       "raycast"
       "onlyoffice"
-      
+      "obsidian"
+
       # File management
       "commander-one"
       "grandperspective"
-      
+
       # System tools
       "karabiner-elements"
-      
+      "scroll-reverser"
+
       # Gaming
       "steam"
-      
+
       # Media
       "vlc"
       "spotify"

@@ -11,7 +11,8 @@
       "Bash(echo:*)",
       "Bash(darwin-rebuild switch:*)",
       "Bash(sudo darwin-rebuild switch:*)",
-      "Bash(/usr/bin/curl --version)"
+      "Bash(/usr/bin/curl --version)",
+      "Bash(gh issue view:*)"
     ]
   }
 }

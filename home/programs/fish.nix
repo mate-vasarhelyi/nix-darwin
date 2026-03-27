@@ -125,21 +125,26 @@
     # Fish shell configuration
     interactiveShellInit = ''
       set -g fish_greeting
-      
+
       set -gx EDITOR "cursor --wait"
       set -gx VISUAL "cursor --wait"
       set -gx GOPRIVATE "github.com/quantum-wealth/*,github.com/techtonic-org/*"
 
       fish_add_path $HOME/.local/bin
       fish_add_path (go env GOPATH)/bin
-      
+
       set -g fish_history_max 10000
-      
+
       set -gx FZF_DEFAULT_COMMAND 'fd --type f --hidden --follow --exclude .git'
       set -gx FZF_DEFAULT_OPTS '--height 40% --layout=reverse --border'
-      
+
+      # Source secrets file if it exists
+      if test -f ~/.config/fish/secrets.fish
+        source ~/.config/fish/secrets.fish
+      end
+
       zoxide init fish | source
-      
+
       direnv hook fish | source
 
       mise activate fish | source

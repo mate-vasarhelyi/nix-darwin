@@ -11,6 +11,7 @@
     ./programs/jankyborders.nix
     ./programs/orbstack.nix
     ./programs/autoraise.nix
+    ./programs/ghostty.nix
   ];
 
   home.username = "mate";
