@@ -1,16 +1,17 @@
 #!/bin/sh
 
 CACHE_FILE="/tmp/claude_usage_cache"
+SECRETS_FILE="$HOME/.config/fish/secrets.fish"
 
-# Get Claude Code OAuth token from macOS Keychain
-CREDS=$(security find-generic-password -s "Claude Code-credentials" -w 2>/dev/null)
-if [ -z "$CREDS" ]; then
-  sketchybar --set "$NAME" label="no auth" icon.color="0xff888888"
+# Get Claude Code OAuth token from secrets.fish
+if [ ! -f "$SECRETS_FILE" ]; then
+  sketchybar --set "$NAME" label="no secrets" icon.color="0xff888888"
   exit 0
 fi
 
-TOKEN=$(echo "$CREDS" | jq -r '.claudeAiOauth.accessToken' 2>/dev/null)
-if [ -z "$TOKEN" ] || [ "$TOKEN" = "null" ]; then
+# Parse the fish set -gx syntax to extract the token
+TOKEN=$(grep 'CLAUDE_CODE_OAUTH_TOKEN' "$SECRETS_FILE" | sed 's/.*"\(.*\)"/\1/')
+if [ -z "$TOKEN" ]; then
   sketchybar --set "$NAME" label="no token" icon.color="0xff888888"
   exit 0
 fi

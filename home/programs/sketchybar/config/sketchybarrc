@@ -106,6 +106,8 @@ sketchybar --add item clock right \
   --subscribe battery system_woke power_source_change \
   --add item claude right \
   --set claude update_freq=300 icon="󰚩" script="$PLUGIN_DIR/claude.sh" \
+  --add item kubectl right \
+  --set kubectl update_freq=30 icon="⎈" label.font="SF Pro:Regular:12.0" script="$PLUGIN_DIR/kubectl.sh" \
   --add item swap e \
   icon="" \
   label.font="Hack Nerd Font:Italic:13.0" \
