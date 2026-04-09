@@ -37,7 +37,7 @@ if [ -n "$API_ERROR" ]; then
         CACHED=$(cat "$CACHE_FILE")
         sketchybar --set "$NAME" label="$CACHED" icon.color="0xffaaaaaa"
       else
-        sketchybar --set "$NAME" label="limited" icon.color="0xffaaaaaa"
+        sketchybar --set "$NAME" label="—" icon.color="0xffaaaaaa"
       fi
       ;;
     authentication_error)
